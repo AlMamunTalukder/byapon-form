@@ -1,4 +1,4 @@
-import { Avatar, IconButton, Input } from "@mui/material";
+import { Avatar, IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ExtensionIcon from "@mui/icons-material/Extension";
 import PaletteIcon from "@mui/icons-material/Palette";
@@ -19,7 +19,7 @@ const FormHeader = () => {
           />
           {/* <Input className=" " placeholder="Untitled Form"></Input> */}
           <input
-            className="bg-transparent "
+            className="bg-transparent border-none border-b focus:border-b focus:border-black focus:outline-none"
             type="text"
             placeholder="Untitled Form"
           />

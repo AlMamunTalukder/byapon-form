@@ -1,7 +1,16 @@
+import { Link, useNavigate } from "react-router-dom";
 import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
 import { Divider, IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import uuid from "react-uuid";
 const Template = () => {
+  const navigate = useNavigate();
+
+  const createForm = () => {
+    const uid = uuid();
+    navigate(`/form/${uid}`);
+  };
+  const uid = uuid();
   return (
     <div className="bg-[rgb(234,236,239)] pb-10 pt-2">
       <div className="template_top flex flex-row items-center justify-between ml-44 mr-44 ">
@@ -20,14 +29,14 @@ const Template = () => {
         </div>
       </div>
       <div className="template body flex text-black gap-6 ml-44">
-        <div className="blank ">
-          <a href="#">
+        <div className="card" onClick={createForm}>
+          <Link to={`/form/${uid}`}>
             <img
               src="https://i.ibb.co/WzwMFBq/forms-blank-googlecolors.png"
               alt=""
               className="w-44 hover:border-purple-300 hover:border-2 rounded-md"
             />
-          </a>
+          </Link>
           <p>Blank Form</p>
         </div>
         <div className="worksheet">

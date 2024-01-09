@@ -7,6 +7,7 @@ import UndoIcon from "@mui/icons-material/Undo";
 import RedoIcon from "@mui/icons-material/Redo";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import FolderOpenOutlinedIcon from "@mui/icons-material/FolderOpenOutlined";
+import CenteredTabs from "./CenteredTabs";
 const FormHeader = () => {
   return (
     <>
@@ -57,9 +58,7 @@ const FormHeader = () => {
         </div>
       </div>
       <div className="flex gap-5 flex-row justify-center bg-white text-black">
-        <p>Question</p>
-        <p>Responses</p>
-        <p>Setting</p>
+        <CenteredTabs />
       </div>
     </>
   );

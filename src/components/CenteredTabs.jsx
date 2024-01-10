@@ -5,15 +5,18 @@ import Tab from "@mui/material/Tab";
 // import makeStyles from "@mui/styles/makeStyles";
 
 const CenteredTabs = () => {
+  const labelStyle = {
+    textTransform: "capitalize",
+    fontSize: "14px",
+    color: "#5f6368",
+    fontWeight: "bold",
+  };
   return (
     <Paper className="flex-grow flex flex-row justify-center">
       <Tabs className="h-3">
-        <Tab
-          label="Questions"
-          className="font-sans font-semibold h-3 text-capitalize text-[#5f6368] text-[12px]"
-        ></Tab>
-        <Tab label="Responses" className="h-3"></Tab>
-        <Tab label="Setting" className="h-3"></Tab>
+        <Tab label="Questions" style={labelStyle} />
+        <Tab label="Responses" style={labelStyle} />
+        <Tab label="Setting" style={labelStyle} />
       </Tabs>
     </Paper>
   );

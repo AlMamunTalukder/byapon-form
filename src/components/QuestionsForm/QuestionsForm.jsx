@@ -26,7 +26,29 @@ import Radio from "@material-ui/core/Radio";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 const QuestionsForm = () => {
-  return <div></div>;
+  return (
+    <div>
+      <div className="question_form bg-[#F4F4F9] h-full pb-[30px]">
+        <br />
+        <div className="section m-auto w-1/2">
+          <div className="question_title_section">
+            <div className="question_form_top bg-white rounded-lg px-[30px] py-[25px] capitalize border-t-8 border-[#673AB7] space-y-4">
+              <input
+                type="text"
+                className="question_form_top_name text-black box-border font-sans text-[32px] font-normal leading-10  w-full border-none outline-none border-b-[1px] border-b-blue-50 h-9 bg-white"
+                placeholder="Untitled document"
+              />
+              <input
+                type="text"
+                className="question_form_top_desc bg-white text-black border-none outline-none"
+                placeholder="Form Description"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default QuestionsForm;

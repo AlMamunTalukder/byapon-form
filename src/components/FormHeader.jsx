@@ -8,6 +8,7 @@ import RedoIcon from "@mui/icons-material/Redo";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import FolderOpenOutlinedIcon from "@mui/icons-material/FolderOpenOutlined";
 import CenteredTabs from "./CenteredTabs";
+import QuestionsForm from "./QuestionsForm/QuestionsForm";
 const FormHeader = () => {
   return (
     <>
@@ -60,6 +61,7 @@ const FormHeader = () => {
       <div className="flex gap-5 flex-row justify-center bg-white text-black">
         <CenteredTabs />
       </div>
+      <QuestionsForm />
     </>
   );
 };

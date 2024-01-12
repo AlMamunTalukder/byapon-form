@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { MenuItem, Select, Typography } from "@mui/material";
+import {
+  Button,
+  IconButton,
+  MenuItem,
+  Select,
+  Typography,
+} from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Accordion from "@mui/material/Accordion";
@@ -7,8 +13,9 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import CropOriginalIcon from "@mui/icons-material/CropOriginal";
 import SubjectIcon from "@mui/icons-material/Subject";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
-// import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import Radio from "@mui/material/Radio";
+import ShortTextIcon from "@mui/icons-material/ShortText";
+import CloseIcon from "@mui/icons-material/Close";
 const QuestionsForm = () => {
   const [questions, setQuestions] = useState([
     {
@@ -25,6 +32,7 @@ const QuestionsForm = () => {
       required: false,
     },
   ]);
+
   const questionUI = () => {
     return questions.map((ques, i) => (
       <div key={i}>
@@ -36,49 +44,30 @@ const QuestionsForm = () => {
             aria-controls="panelia-content"
             id="panelia-header"
             elevation={1}
-            style={{ width: "100%" }}
+            className="w-full"
           >
             {questions[i].open ? (
               <div className="saved_questions">
-                {/* Display question number and text */}
-                <Typography
-                  style={{
-                    fontSize: "15px",
-                    fontWeight: "400",
-                    letterSpacing: ".1px",
-                    lineHeight: "24px",
-                    paddingBottom: "8px",
-                  }}
-                >
+                <Typography className="text-[15px] font-normal tracking-wide leading-6 pb-2 text-[#202124]">
                   {i + 1}. {questions[i].questionText}
                 </Typography>
 
                 {ques.options.map((op, j) => (
                   <div key={j}>
-                    <div style={{ display: "flex" }}>
+                    <div className="flex">
                       <FormControlLabel
-                        style={{ marginLeft: "5px", marginBottom: "5px" }}
+                        className="ml-[5px] mb-[5px]"
                         disabled
                         control={
                           <input
                             type={ques.questionType}
-                            color="primary"
-                            style={{ marginRight: "3px" }}
+                            className="text-primary mr-1"
                             required={ques.type}
                           />
                         }
                         label={
-                          <Typography
-                            style={{
-                              fontFamily: "Roboto, Arial, sans-serif",
-                              fontSize: "13px",
-                              fontWeight: "400",
-                              letterSpacing: ".2px",
-                              lineHeight: "20px",
-                              color: "#202124",
-                            }}
-                          >
-                            {ques.options[j].optionText}
+                          <Typography className=" font-sans text-[13px] font-normal tracking-wide leading-5 text-[#202124]">
+                            {op.optionText}
                           </Typography>
                         }
                       />
@@ -91,62 +80,68 @@ const QuestionsForm = () => {
             )}
           </AccordionSummary>
 
-          <div className="question_boxes">
-            <AccordionDetails className="add_question">
-              <div className="add_question_top">
+          <div className="question_boxes flex flex-row justify-center">
+            <AccordionDetails className="add_question bg-white rounded-lg px-6 py-[22px] capitalize flex flex-col pt-0 w-[93%] ml-[10px]">
+              <div className="add_question_top flex flex-row items-center justify-between">
                 <input
                   type="text"
-                  className="question"
+                  className="question box-border mt-[10px] font-sans text-base font-normal flex-1 leading-10 w-2/5 bg-white border-none outline-none text-black h-10 p-2 focus:border-b focus:to-purple-800 focus:bg-[#F4F4F9] "
                   placeholder="Questions"
                   value={ques.questionText}
                 ></input>
-                <CropOriginalIcon style={{ color: "#5f6368" }} />
-                <Select
-                  className="select"
-                  style={{ color: "#5f6368", fontSize: "13px" }}
-                >
-                  <MenuItem id="text" value="text">
-                    {" "}
-                    <SubjectIcon style={{ marginRight: "10px" }} /> Paragraph
+                <CropOriginalIcon className="text-[#5f6368]" />
+                <Select className="select text-[#5f6368] text-[13px] h-10 w-[230px] border-2 border-[#F4F4F9] rounded bg-transparent">
+                  <MenuItem id="text" value="text" className="text-black">
+                    <SubjectIcon className="mr-3" /> Paragraph
                   </MenuItem>
-                  <MenuItem id="checkbox" value="checkbox">
-                    {" "}
-                    <CheckBoxIcon
-                      style={{ marginRight: "10px", color: "#70757a" }}
-                      checked
-                    />{" "}
+                  <MenuItem
+                    id="checkbox"
+                    value="checkbox"
+                    className="text-black"
+                  >
+                    <CheckBoxIcon className="mr-3 text-[#70757a]" checked />
                     Checkbox
                   </MenuItem>
-                  <MenuItem id="radio" value="radio">
-                    {" "}
-                    <Radio
-                      style={{ marginRight: "10px", color: "#70757a" }}
-                      checked
-                    />{" "}
+                  <MenuItem id="radio" value="radio" className="text-black">
+                    <Radio className="mr-3 text-[#70757a]" checked />
                     Multiple Choice
                   </MenuItem>
-                  <MenuItem>Paragraph</MenuItem>
                 </Select>
               </div>
 
-{ques.options.map((op,j)=>(
+              {ques.options.map((op, j) => (
+                <div className="add_question_body flex items-center" key={j}>
+                  {ques.questionType != "text" ? (
+                    <input type={ques.questionType} className="mr-3 " />
+                  ) : (
+                    <ShortTextIcon className="mr-3" />
+                  )}
+                  <div>
+                    <input
+                      type="text"
+                      className="text-input outline-none border-none h-10 w-[490px] font-sans text-[13px] font-normal tracking-wide text-[#202124] focus:border-b-2 focus:border-purple-500 bg-white"
+                      value={ques.options[j].optionText}
+                      placeholder="option"
+                    />
+                  </div>
 
-<div className="add_question_body" key={j}>
-{
-  (ques.questionType!="text")?
-  <input type={ques.questionType} style={{marginRight:'10px'}}/>
-}
-
-</div>
-
-
-))}
-
-
-
-
-
-
+                  <CropOriginalIcon className="text-[#5f6368]" />
+                  <IconButton aria-label="delete">
+                    <CloseIcon />
+                  </IconButton>
+                </div>
+              ))}
+              <div className="add_footer">
+                <div className="add_question_bottom_left">
+                  <Button
+                    size="small"
+                    className="normal-case text-[#4285f4] text-[13px] font-semibold"
+                  >
+                    {/* <FcRightUp className="border-[#4285f4] border-[2px] p-[2px] mr-2" /> */}
+                    Answer Key
+                  </Button>
+                </div>
+              </div>
             </AccordionDetails>
           </div>
         </Accordion>

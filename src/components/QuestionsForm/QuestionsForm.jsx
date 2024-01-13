@@ -4,6 +4,7 @@ import {
   IconButton,
   MenuItem,
   Select,
+  Switch,
   Typography,
 } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -16,6 +17,11 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import Radio from "@mui/material/Radio";
 import ShortTextIcon from "@mui/icons-material/ShortText";
 import CloseIcon from "@mui/icons-material/Close";
+import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined";
+import FilterNoneOutlinedIcon from "@mui/icons-material/FilterNoneOutlined";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
+import Divider from "@mui/material/Divider";
 const QuestionsForm = () => {
   const [questions, setQuestions] = useState([
     {
@@ -137,9 +143,26 @@ const QuestionsForm = () => {
                     size="small"
                     className="normal-case text-[#4285f4] text-[13px] font-semibold"
                   >
-                    {/* <FcRightUp className="border-[#4285f4] border-[2px] p-[2px] mr-2" /> */}
+                    <AssignmentTurnedInOutlinedIcon className=" p-[2px] mr-2" />
                     Answer Key
                   </Button>
+                </div>
+                <div className="add_question_bottom">
+                  <IconButton aria-label="Copy">
+                    <FilterNoneOutlinedIcon />
+                  </IconButton>
+
+                  <IconButton aria-label="delete">
+                    <DeleteOutlinedIcon />
+                  </IconButton>
+
+                  <div className="divider divider-start"></div>
+
+                  <span className="text-[#5f6368] text-[13px]">Required</span>
+                  <Switch name="checkedA" color="primary" checked></Switch>
+                  <IconButton>
+                    <MoreVertOutlinedIcon />
+                  </IconButton>
                 </div>
               </div>
             </AccordionDetails>

@@ -137,6 +137,42 @@ const QuestionsForm = () => {
                   </IconButton>
                 </div>
               ))}
+
+              {ques.options.length < 5 ? (
+                <div className="add_question_body">
+                  <FormControlLabel
+                    disabled
+                    control={
+                      ques.questionType != "text" ? (
+                        <input
+                          type={ques.questionType}
+                          color="primary"
+                          aria-label="secondary checkbox"
+                          className="ml-[10px] mr-[10px]"
+                          disabled
+                        />
+                      ) : (
+                        <ShortTextIcon className="mr-[10px]" />
+                      )
+                    }
+                    label={
+                      <div>
+                        <input
+                          type="text"
+                          className="text-input text-[13px] w-[60px]"
+                          placeholder="Add other"
+                        />
+                        <Button className="btn btn-sm normal-case text-[#4285f4] text-[13px] font-semibold">
+                          Add Option
+                        </Button>
+                      </div>
+                    }
+                  />
+                </div>
+              ) : (
+                ""
+              )}
+
               <div className="add_footer">
                 <div className="add_question_bottom_left">
                   <Button
